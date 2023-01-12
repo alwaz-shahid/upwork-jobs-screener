@@ -80,13 +80,14 @@ search_entry = ttk.Entry(root, textvariable=search_var)
 search_entry.pack()
 
 def search():
-    search_keyword = search_var.
+    search_keyword = search_var.get()
     # update the params variable with the search keyword
     params['q'] = search_keyword
     loading_animation.start()
     loading_animation.pack()
     skeleton_frame.pack()
     get_data()
+
 
 search_button = ttk.Button(root, text="Search", command=search)
 search_button.pack()
