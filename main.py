@@ -3,7 +3,9 @@ import json
 import webbrowser
 from tkinter import *
 from tkinter import ttk
+import os
 
+API_KEY = os.environ.get('API_KEY')
 root = Tk()
 root.title("Upwork Job Screener")
 
