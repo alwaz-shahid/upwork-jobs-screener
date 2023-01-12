@@ -52,20 +52,24 @@ if response.status_code == 200:
         tree.insert("", "end", values=(job['title'], job['client']['name'], job['budget'], job['url']))
 
 
-# Define a function to open the job URL in a browser when the user double clicks on a row in the Treeview
-def open_job(event):
-    item = tree.identify('item', event.x, event.y)
-    job_url = tree.item(item, 'values')[3]
-    webbrowser.open(job_url)
+    # Define a function to open the job URL in a browser when the user double clicks on a row in the Treeview
+    def open_job(event):
+        item = tree.identify('item', event.x, event.y)
+        job_url = tree.item(item, 'values')[3]
+        webbrowser.open(job_url)
 
 
-# Bind the function to the Treeview widget
-tree.bind("<Double-1>", open_job)
+    # Bind the function to the Treeview widget
+    tree.bind("<Double-1>", open_job)
 
-# Create a scrollbar for the Treeview widget
-scrollbar = Scrollbar(root)
-scrollbar.pack(side=RIGHT, fill=Y)
+    # Create a scrollbar for the Treeview widget
+    scrollbar = Scrollbar(root)
+    scrollbar.pack(side=RIGHT, fill=Y)
 
-# Set the scrollbar to control the Treeview widget
-tree.config(yscrollcommand=scrollbar.set)
-scrollbar.config(command=tree.yview)
+    # Set the scrollbar to control the Treeview widget
+    tree.config(yscrollcommand=scrollbar.set)
+    scrollbar.config(command=tree.yview)
+else:
+    print(response.status_code)
+
+root.mainloop()
