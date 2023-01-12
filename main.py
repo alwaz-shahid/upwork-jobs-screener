@@ -57,3 +57,15 @@ def open_job(event):
     item = tree.identify('item', event.x, event.y)
     job_url = tree.item(item, 'values')[3]
     webbrowser.open(job_url)
+
+
+# Bind the function to the Treeview widget
+tree.bind("<Double-1>", open_job)
+
+# Create a scrollbar for the Treeview widget
+scrollbar = Scrollbar(root)
+scrollbar.pack(side=RIGHT, fill=Y)
+
+# Set the scrollbar to control the Treeview widget
+tree.config(yscrollcommand=scrollbar.set)
+scrollbar.config(command=tree.yview)
