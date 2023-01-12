@@ -51,4 +51,9 @@ if response.status_code == 200:
     for job in data['jobs']:
         tree.insert("", "end", values=(job['title'], job['client']['name'], job['budget'], job['url']))
 
-    # Define a
+
+# Define a function to open the job URL in a browser when the user double clicks on a row in the Treeview
+def open_job(event):
+    item = tree.identify('item', event.x, event.y)
+    job_url = tree.item(item, 'values')[3]
+    webbrowser.open(job_url)
