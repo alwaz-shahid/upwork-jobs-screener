@@ -31,3 +31,22 @@ if response.status_code == 200:
     # Parse the JSON data
     data = json.loads(response.text)
 
+    # Create a Treeview widget to display the job listings
+    tree = ttk.Treeview(root)
+    tree["columns"] = ("title", "client", "budget", "url")
+    tree.column("#0", width=0, stretch=NO)
+    tree.column("title", width=150, stretch=NO)
+    tree.column("client", width=100, stretch=NO)
+    tree.column("budget", width=100, stretch=NO)
+    tree.column("url", width=0, stretch=NO)
+    tree.heading("title", text="Title")
+    tree.heading("client", text="Client")
+    tree.heading("budget", text="Budget")
+    tree.heading("url", text="URL")
+    tree.pack()
+
+    # Loop through the job listings
+    for job in data['jobs']:
+        tree.insert("", "end", values=(job['title'], job['client']['name'], job['budget'], job['url']))
+
+    # Define a
