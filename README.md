@@ -23,7 +23,7 @@ The Upwork Screener App is a tool for searching and filtering job listings on Up
 
 Copy code
 
-`git clone https://github.com/your_username/upwork-screener-app.git` 
+`git clone https://github.com/alwaz-shahid/upwork-screener-app.git` 
 
 2.  Run the app
 
